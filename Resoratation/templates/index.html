@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Restoration</title>
+</head>
+<body>
+    <h1>Image Restoration</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <button type="submit">Upload Image</button>
+    </form>
+
+    {% if filename %}
+        <h2>Uploaded Image: {{ filename }}</h2>
+        <img src="{{ url_for('static', filename='images/' + filename) }}" alt="Uploaded Image">
+
+        {% if restored_img_url %}
+            <h2>Restored Image:</h2>
+            <img src="{{ restored_img_url }}" alt="Restored Image">
+        {% endif %}
+    {% endif %}
+</body>
+</html>
